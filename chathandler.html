@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Discord-like Website</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>My Discord-like Website</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="chat.html">Chat</a></li>
+      <li><a href="profile.html">Profile</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <div class="chat-container">
+    <div class="chat-messages" id="chat-messages">
+      <!-- Chat messages go here -->
+    </div>
+    <div class="user-list">
+      <!-- User list goes here -->
+    </div>
+    <div class="message-input">
+      <input type="text" id="message-input" placeholder="Type your message...">
+      <button id="send-button">Send</button>
+    </div>
+  </div>
+</main>
+<footer>
+  <p>&copy; 2024 My Discord-like Website</p>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const messageInput = document.getElementById('message-input');
+    const sendButton = document.getElementById('send-button');
+    const chatMessages = document.getElementById('chat-messages');
+
+    sendButton.addEventListener('click', function() {
+      const message = messageInput.value.trim();
+      if (message !== '') {
+        appendMessage(message);
+        messageInput.value = '';
+      }
+    });
+
+    function appendMessage(message) {
+      const messageElement = document.createElement('div');
+      messageElement.textContent = message;
+      chatMessages.appendChild(messageElement);
+      chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+    }
+  });
+</script>
+
+</body>
+</html>
